@@ -33,6 +33,32 @@
   flex-direction: column;
   padding: 1rem;
 }
+.unit-toggle {
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  gap:15px;
+}
+
+.unit-toggle button {
+  background: rgba(196, 196, 196, 0.726);
+  border: none;
+  padding: 8px 12px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.unit-toggle button.active {
+  background: rgba(255, 255, 255, 1); 
+  font-weight: bold;
+
+}
+.unit-toggle > button:hover{
+  cursor: pointer;
+  background-color: lightgray;
+}
 
 .section {
   width: 100%;
@@ -49,7 +75,7 @@
   background-color: var(--section-overlay);
 }
 
-.section__inputs > input {
+.section__inputs> input {
   border: 0.8px solid white;
   border-radius: 0.4rem;
   background-color: transparent;
@@ -77,7 +103,7 @@
   background-color: lightgray;
 }
 
-.icon {
+.weather-header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -99,6 +125,7 @@
   background: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
   padding: 15px;
+  background-color: var(--section-overlay);
 }
 
 .forecast-container {
@@ -113,7 +140,7 @@
   border-radius: 10px;
   padding: 20px;
   text-align: center;
-  min-width: 125px;
+  min-width: 127px;
 }
 
 .forecast-card img {
@@ -126,4 +153,13 @@ h2{
   margin: 10px; 
   color: white;
   text-transform: capitalize;
+}
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
+
+  .unit-toggle {
+    justify-content: center;
+  }
 }

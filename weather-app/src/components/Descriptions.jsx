@@ -1,10 +1,11 @@
 import React from "react";
 import "./descriptions.css";
 
-import { FaWind } from "react-icons/fa";
+import { LuWind } from "react-icons/lu";
 import { FaAnglesDown,FaAnglesUp } from "react-icons/fa6";
-import { BiHappy } from "react-icons/bi";
-import { MdCompress, MdOutlineWaterDrop } from "react-icons/md";
+import { IoHappyOutline } from "react-icons/io5";
+import { WiHumidity } from "react-icons/wi";
+
 
 const Descriptions = ({ weather, units }) => {
   const tempUnit = units === "metric" ? "°C" : "°F";
@@ -27,28 +28,21 @@ const Descriptions = ({ weather, units }) => {
     },
     {
       id: 3,
-      icon: <BiHappy />,
+      icon: <IoHappyOutline />,
       title: "feels like",
       data: weather.feels_like.toFixed(),
       unit: tempUnit,
     },
     {
-      id: 4,
-      icon: <MdCompress />,
-      title: "pressure",
-      data: weather.pressure,
-      unit: "hPa",
-    },
-    {
       id: 5,
-      icon: <MdOutlineWaterDrop />,
+      icon: <WiHumidity />,
       title: "humidity",
       data: weather.humidity,
       unit: "%",
     },
     {
       id: 6,
-      icon: <FaWind />,
+      icon: <LuWind />,
       title: "wind speed",
       data: weather.speed.toFixed(),
       unit: windUnit,
@@ -61,7 +55,7 @@ const Descriptions = ({ weather, units }) => {
         <div key={id} className="card">
           <div className="description__card-icon">
             {icon}
-            <small>{title}</small>
+            <middle>{title}</middle>
           </div>
           <h2>{`${data} ${unit}`}</h2>
         </div>

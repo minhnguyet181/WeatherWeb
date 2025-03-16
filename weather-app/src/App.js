@@ -3,11 +3,13 @@ import coldBackground from "../src/assets/snow.jpg";
 import Descriptions from "./components/Descriptions";
 import { useEffect, useState } from "react";
 import { getFormattedWeatherData } from "./weatherService";
+import { FaSearchLocation } from "react-icons/fa";
 
 function App() {
   const [city, setCity] = useState("Hanoi");
   const [weather, setWeather] = useState(null);
   const [units, setUnits] = useState("metric");
+  const [inputCity, setInputCity] = useState("");
   const [bg, setBg] = useState(hotBackground);
 
   useEffect(() => {
@@ -24,19 +26,14 @@ function App() {
     fetchWeatherData();
   }, [units, city]);
 
-  const handleUnitsClick = (e) => {
-    const button = e.currentTarget;
-    const currentUnit = button.innerText.slice(1);
-
-    const isCelsius = currentUnit === "C";
-    button.innerText = isCelsius ? "°F" : "°C";
-    setUnits(isCelsius ? "metric" : "imperial");
+  const handleUnitChange = (unit) => {
+    setUnits(unit);
   };
 
-  const enterKeyPressed = (e) => {
-    if (e.keyCode === 13) {
-      setCity(e.currentTarget.value);
-      e.currentTarget.blur();
+  const handleSearch = () => {
+    if (inputCity !== "") {
+      setCity(inputCity);
+      setInputCity("");
     }
   };
 
@@ -45,19 +42,37 @@ function App() {
       <div className="overlay">
         {weather && (
           <div className="container">
+                <div className="unit-toggle">
+                <button
+                  className={units === "metric" ? "active" : ""}
+                  onClick={() => handleUnitChange("metric")}
+                >
+                  °C
+                </button>
+                <button
+                  className={units === "imperial" ? "active" : ""}
+                  onClick={() => handleUnitChange("imperial")}
+                >
+                  °F
+                </button>
+              </div>
             <div className="section section__inputs">
-              <input
-                onKeyDown={enterKeyPressed}
-                type="text"
-                name="city"
-                placeholder="Enter City..."
-              />
-              <button onClick={(e) => handleUnitsClick(e)}>°F</button>
+                <input
+                  type="text"
+                  placeholder="Enter City..."
+                  value={inputCity}
+                  onChange={(e) => setInputCity(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+                />
+                <button onClick={handleSearch}>
+                  <FaSearchLocation size={20} />
+                </button>
             </div>
 
             <div className="section section__temperature">
-              <div className="icon">
+              <div className="weather-header">
                 <h3>{`${weather.name}, ${weather.country}`}</h3>
+                <h3>{`${weather.currentDate}`}</h3>
                 <img src={weather.iconURL} alt="weatherIcon" />
                 <h3>{weather.description}</h3>
               </div>

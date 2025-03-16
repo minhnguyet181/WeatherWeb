@@ -24,7 +24,7 @@
   margin-bottom: 12px;
 }
 
-.description__card-icon > small {
+.description__card-icon > middle {
   text-transform: capitalize;
 }
 
