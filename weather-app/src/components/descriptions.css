@@ -1,7 +1,7 @@
 .section__descriptions {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
+  gap: 1.6rem;
 }
 
 .card {
@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: space-between;
   background-color: var(--section-overlay);
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 0.4rem;
 }
 
@@ -20,7 +20,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 4px;
   margin-bottom: 12px;
 }
 
@@ -28,8 +28,8 @@
   text-transform: capitalize;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
   .section__descriptions {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.5fr 0.5fr;
   }
 }
